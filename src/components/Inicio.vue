@@ -151,55 +151,36 @@
 
   <div class="servi">
     <div class="carousel-container">
-      <!-- Botón de navegación izquierda (sin etiqueta) -->
-      <q-btn
-        class="nav-button left"
-        @click="previousSlide"
-        flat
-        round
-        color="primary"
-        aria-label="Anterior"
-      />
+  <q-carousel
+    swipeable
+    animated
+    v-model="slide"
+    thumbnails
+    infinite
+  >
+    <q-carousel-slide 
+      :name="1" 
+      img-src="https://isu.edu.mx/wp-content/uploads/2022/08/Cuantos-anos-se-requieren-para-estudiar-la-carrera-de-Chef.jpg"
+      @click.native="goToService"
+    /> 
+    <q-carousel-slide 
+      :name="2" 
+      img-src="https://termosyeti.com/wp-content/uploads/2023/10/bebidas-alcoholicas.jpg"
+      @click.native="goToService" 
+    />
+    <q-carousel-slide 
+      :name="3" 
+      img-src="https://img.hellofresh.com/w_3840,q_auto,f_auto,c_fill,fl_lossy/hellofresh_website/es/cms/SEO/recipes/albondigas-caseras-de-cerdo-con-salsa-barbacoa.jpeg"
+      @click.native="goToService" 
+    />
+    <q-carousel-slide 
+      :name="4" 
+      img-src="https://www.komoder.es/images/blog/blog13.webp"
+      @click.native="goToService" 
+    />
+  </q-carousel>
+</div>
 
-      <!-- Carrusel de servicios -->
-      <q-carousel
-        animated
-        v-model="slide"
-        height="400px"
-        class="custom-carousel"
-      >
-        <q-carousel-slide name="first" img-src="https://isu.edu.mx/wp-content/uploads/2022/08/Cuantos-anos-se-requieren-para-estudiar-la-carrera-de-Chef.jpg" @click="goToService">
-          <div class="absolute-bottom custom-caption">
-            <div class="text-h2">Servicio 1</div>
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="second" img-src="https://termosyeti.com/wp-content/uploads/2023/10/bebidas-alcoholicas.jpg" @click="goToService">
-          <div class="absolute-bottom custom-caption">
-            <div class="text-h2">Servicio 2</div>
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="third" img-src="https://img.hellofresh.com/w_3840,q_auto,f_auto,c_fill,fl_lossy/hellofresh_website/es/cms/SEO/recipes/albondigas-caseras-de-cerdo-con-salsa-barbacoa.jpeg" @click="goToService">
-          <div class="absolute-bottom custom-caption">
-            <div class="text-h2">Servicio 3</div>
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="fourth" img-src="https://www.komoder.es/images/blog/blog13.webp" @click="goToService">
-          <div class="absolute-bottom custom-caption">
-            <div class="text-h2">Servicio 4</div>
-          </div>
-        </q-carousel-slide>
-      </q-carousel>
-
-      <!-- Botón de navegación derecha (sin etiqueta) -->
-      <q-btn
-        class="nav-button right"
-        @click="nextSlide"
-        flat
-        round
-        color="primary"
-        aria-label="Siguiente"
-      />
-    </div>
   </div>
   <div class="deportes">
     <h3>Diviértete con nuestros entretenidos deportes</h3>
@@ -245,9 +226,31 @@
       </q-img>
     </q-card>
   </div>
-  <div class="contactos" >
-    <h6>Contactos <br> 3222343245 <br>nos ubicamos en <br> carrera 6#20-16</h6>
-  </div>
+<footer class="footer">
+      <div class="footer-content">
+        <div class="contact-info">
+          <p>Email: contacto@hotel.com</p>
+          <p>Teléfono: +57 1 2345678</p>
+          <p>
+            Dirección: Calle Falsa 123, San Gil 
+            <a href="https://www.google.com/maps/place/Calle+Falsa+123,+San+Gil,+Santander/@6.5714846,-73.1341889,15z/data=!4m6!3m5!1s0x8e4a1cb34ebf89f7:0xa3ab7d2b490a2b94!8m2!3d6.5714846!4d-73.1341889!16s%2Fg%2F11gq_pnxtk?entry=ttu" target="_blank">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/map-marker.png" alt="Mapa" />
+            </a>
+          </p>
+        </div>
+        <div class="social-media">
+          <a href="https://www.facebook.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" />
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/twitter-squared.png" alt="Twitter" />
+          </a>
+        </div>
+      </div>
+    </footer>
 </template>
 
 <script>
@@ -526,4 +529,49 @@ h3 {
   font-family: 'Brush Script MT', cursive; 
   text-align: center; 
 }
+.footer {
+  width: 100%; /* Ocupa todo el ancho de la página */
+  background-color: #000; /* Puedes cambiar el color si lo deseas */
+  color: #ffffff;
+  padding: 20px 0; /* Espacio arriba y abajo del contenido */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-content {
+  width: 90%; /* Ajusta el contenido al 90% del ancho para dejar un margen */
+  max-width: 1400px; /* Limita el ancho máximo */
+  margin: 0 auto; /* Centra el contenido */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que el contenido se ajuste en pantallas pequeñas */
+}
+
+.contact-info, .social-media {
+  margin: 10px 0; /* Espacio entre elementos */
+}
+
+.contact-info p {
+  margin: 5px 0; /* Espacio entre las líneas de contacto */
+}
+
+.social-media a {
+  margin: 0 10px; /* Espacio entre los íconos de redes sociales */
+}
+
+div.q-page-container.page-container{
+  padding: 0;
+}
+footer.footer{
+  padding: 0;
+  height: ;
+  width: 1903px;
+  margin-top: 20px;
+  margin-left: -20px;
+  margin-bottom: -20px;
+}
+
 </style>
