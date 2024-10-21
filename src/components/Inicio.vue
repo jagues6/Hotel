@@ -567,7 +567,7 @@ div.q-page-container.page-container{
 }
 footer.footer{
   padding: 0;
-  width: 1900px;
+  width: 102.2%;
   margin-top: 20px;
   margin-left: -20px;
   margin-bottom: -20px;
