@@ -541,25 +541,25 @@ h3 {
 }
 
 .footer-content {
-  width: 90%; /* Ajusta el contenido al 90% del ancho para dejar un margen */
-  max-width: 1400px; /* Limita el ancho máximo */
-  margin: 0 auto; /* Centra el contenido */
+  width: 90%; 
+  max-width: 1400px; 
+  margin: 0 auto; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Permite que el contenido se ajuste en pantallas pequeñas */
+  flex-wrap: wrap; 
 }
 
 .contact-info, .social-media {
-  margin: 10px 0; /* Espacio entre elementos */
+  margin: 10px 0; 
 }
 
 .contact-info p {
-  margin: 5px 0; /* Espacio entre las líneas de contacto */
+  margin: 5px 0; 
 }
 
 .social-media a {
-  margin: 0 10px; /* Espacio entre los íconos de redes sociales */
+  margin: 0 10px; 
 }
 
 div.q-page-container.page-container{
