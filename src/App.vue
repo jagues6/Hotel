@@ -3,7 +3,7 @@
     <q-layout view="hHh Lpr lff" container class="shadow-2 full-height">
       <q-header elevated :class="$q.dark.isActive ? 'bg-primary' : 'bg-black'">
         <q-toolbar class="toolbar-custom">
-          <q-btn flat @click="drawer = !drawer" round dense>
+          <q-btn flat @click="drawer.value = !drawer.value" round dense>
             <img
               src="https://banner2.cleanpng.com/20190826/keu/transparent-interface-and-web-icon-menu-button-of-three-horizo-5d63c2541bed33.4910190815668189001144.jpg"
               alt="menu"
@@ -54,10 +54,10 @@
 
       <div class="background-movement"></div>
 
-      <q-page-container class="page-container">
+      <q-page-container ref="pageContainer" class="page-container">
         <router-view />
         
-        <div v-if="showContact" class="contact-footer">
+        <div v-if="showContact.value" class="contact-footer">
           <p>Contacto: contacto@hotelsuenosdorados.com</p>
           <p>Hotel Sueños Dorados</p>
         </div>
@@ -96,37 +96,40 @@
 </template>
 
 <script>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
 
 export default {
-  data() {
-    return {
-      drawer: false,
-      loginDialog: false,
-      login: {
-        email: '',
-        password: '',
-      },
-      showContact: false, 
+  setup() {
+    const router = useRouter();
+    const drawer = ref(false);
+    const loginDialog = ref(false);
+    const showContact = ref(false);
+    const login = ref({
+      email: '',
+      password: '',
+    });
+
+    const navigateTo = (route) => {
+      router.push(route);
+      drawer.value = false;
     };
-  },
-  methods: {
-    navigateTo(route) {
-      this.$router.push(route);
-      this.drawer = false;
-    },
-    openLoginDialog() {
-      this.loginDialog = true;
-    },
-    closeLoginDialog() {
-      this.loginDialog = false;
-      this.login.email = '';
-      this.login.password = '';
-    },
-    submitLogin() {
-      if (this.login.email && this.login.password) {
-        alert(`Bienvenido, ${this.login.email}`);
-        this.closeLoginDialog();
+
+    const openLoginDialog = () => {
+      loginDialog.value = true;
+    };
+
+    const closeLoginDialog = () => {
+      loginDialog.value = false;
+      login.value.email = '';
+      login.value.password = '';
+    };
+
+    const submitLogin = () => {
+      if (login.value.email && login.value.password) {
+        alert(`Bienvenido, ${login.value.email}`);
+        closeLoginDialog();
       } else {
         Swal.fire({
           title: "!Agrega el correo o contraseña¡",
@@ -142,24 +145,38 @@ export default {
           `,
         });
       }
-    },
-    checkScroll() {
-      const pageContainer = this.$el.querySelector('.page-container');
+    };
+
+    const checkScroll = () => {
+      const pageContainer = document.querySelector('.page-container');
 
       if (pageContainer.scrollHeight - pageContainer.scrollTop <= pageContainer.clientHeight + 10) {
-        this.showContact = true;
+        showContact.value = true;
       } else {
-        this.showContact = false; 
+        showContact.value = false;
       }
-    },
-  },
-  mounted() {
-    const pageContainer = this.$el.querySelector('.page-container');
-    pageContainer.addEventListener('scroll', this.checkScroll);
-  },
-  beforeDestroy() {
-    const pageContainer = this.$el.querySelector('.page-container');
-    pageContainer.removeEventListener('scroll', this.checkScroll); 
+    };
+
+    onMounted(() => {
+      const pageContainer = document.querySelector('.page-container');
+      pageContainer.addEventListener('scroll', checkScroll);
+    });
+
+    onBeforeUnmount(() => {
+      const pageContainer = document.querySelector('.page-container');
+      pageContainer.removeEventListener('scroll', checkScroll);
+    });
+
+    return {
+      drawer,
+      loginDialog,
+      login,
+      showContact,
+      navigateTo,
+      openLoginDialog,
+      closeLoginDialog,
+      submitLogin,
+    };
   },
 };
 </script>
@@ -169,7 +186,7 @@ export default {
   padding: 0;
   height: 100vh;
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .shadow-2 {
@@ -181,7 +198,7 @@ export default {
 }
 
 .toolbar-custom {
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -190,7 +207,7 @@ export default {
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #FFD700; 
+  border: 2px solid #FFD700;
   padding: 4px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -201,7 +218,7 @@ export default {
 }
 
 .titulo-btn {
-  width: 100%; 
+  width: 100%;
   text-align: center;
   padding: 0;
   height: 100%;
@@ -210,14 +227,14 @@ export default {
 .titulo-texto {
   position: relative;
   z-index: 2;
-  font-size: 3rem; 
-  color: #FFD700; 
-  font-family: 'Brush Script MT', cursive; 
+  font-size: 3rem;
+  color: #FFD700;
+  font-family: 'Brush Script MT', cursive;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
   text-align: center;
   animation: bounceTitle 2s ease infinite;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 @keyframes bounceTitle {
@@ -261,8 +278,8 @@ export default {
 }
 
 .page-container {
-  padding: 20px; 
-  z-index: 1; 
+  padding: 20px;
+  z-index: 1;
 }
 
 .login-card {
@@ -276,19 +293,19 @@ export default {
 }
 
 .menu-list .text-yellow {
-  color: #FFD700; 
+  color: #FFD700;
 }
 
 .contact-footer {
-  background-color: rgba(0, 0, 0, 0.8); 
-  color: #FFD700; 
-  padding: 15px; 
-  text-align: center; 
-  position: fixed; 
-  bottom: 0; 
-  left: 0; 
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #FFD700;
+  padding: 15px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   right: 0;
-  z-index: 10; 
-  transition: opacity 0.3s ease; 
+  z-index: 10;
+  transition: opacity 0.3s ease;
 }
 </style>
