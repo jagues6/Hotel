@@ -253,68 +253,80 @@
     </footer>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      destinationDialog: false,
-      dateDialog: false,
-      peopleDialog: false,
-      selectedDestination: null,
-      selectedDate: null,
-      selectedPeople: null,
-      peopleOptions: [1, 2, 3, 4],
-      filteredDestinations: ['Playa', 'Montaña', 'Ciudad', 'Campo'],
-      slide: 'first',
-    };
-  },
-  methods: {
-    openDestinationDialog() {
-      this.destinationDialog = true;
-    },
-    closeDestinationDialog() {
-      this.destinationDialog = false;
-    },
-    selectDestination(destination) {
-      this.selectedDestination = destination;
-      this.closeDestinationDialog();
-    },
-    openDateDialog() {
-      this.dateDialog = true;
-    },
-    closeDateDialog() {
-      this.dateDialog = false;
-    },
-    openPeopleDialog() {
-      this.peopleDialog = true;
-    },
-    closePeopleDialog() {
-      this.peopleDialog = false;
-    },
-    updatePeopleLabel() {
-    },
-    performSearch() {
-    },
-    goToRooms() {
-      this.$router.push('/habitaciones'); 
-    },
-    goToService() {
-      this.$router.push('/servicios'); 
-    },
-    goToSports() {
-      this.$router.push('/deportes');
-    },
-    previousSlide() {
+<script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-      this.slide = this.slide === 'first' ? 'fourth' : this.slide - 1;
-    },
-    nextSlide() {
+const router = useRouter();
 
-      this.slide = this.slide === 'fourth' ? 'first' : this.slide + 1;
-    },
-  },
+const destinationDialog = ref(false);
+const dateDialog = ref(false);
+const peopleDialog = ref(false);
+const selectedDestination = ref(null);
+const selectedDate = ref(null);
+const selectedPeople = ref(null);
+const peopleOptions = ref([1, 2, 3, 4]);
+const filteredDestinations = ref(['Playa', 'Montaña', 'Ciudad', 'Campo']);
+const slide = ref('first');
+
+const openDestinationDialog = () => {
+  destinationDialog.value = true;
+};
+
+const closeDestinationDialog = () => {
+  destinationDialog.value = false;
+};
+
+const selectDestination = (destination) => {
+  selectedDestination.value = destination;
+  closeDestinationDialog();
+};
+
+const openDateDialog = () => {
+  dateDialog.value = true;
+};
+
+const closeDateDialog = () => {
+  dateDialog.value = false;
+};
+
+const openPeopleDialog = () => {
+  peopleDialog.value = true;
+};
+
+const closePeopleDialog = () => {
+  peopleDialog.value = false;
+};
+
+const updatePeopleLabel = () => {
+  // Aquí puedes añadir lógica si es necesario
+};
+
+const performSearch = () => {
+  // Aquí puedes añadir lógica si es necesario
+};
+
+const goToRooms = () => {
+  router.push('/habitaciones');
+};
+
+const goToService = () => {
+  router.push('/servicios');
+};
+
+const goToSports = () => {
+  router.push('/deportes');
+};
+
+const previousSlide = () => {
+  slide.value = slide.value === 'first' ? 'fourth' : (parseInt(slide.value) - 1).toString();
+};
+
+const nextSlide = () => {
+  slide.value = slide.value === 'fourth' ? 'first' : (parseInt(slide.value) + 1).toString();
 };
 </script>
+
 
 <style scoped>
 .destination-header {
@@ -541,25 +553,25 @@ h3 {
 }
 
 .footer-content {
-  width: 90%; 
-  max-width: 1400px; 
-  margin: 0 auto; 
+  width: 90%; /* Ajusta el contenido al 90% del ancho para dejar un margen */
+  max-width: 1400px; /* Limita el ancho máximo */
+  margin: 0 auto; /* Centra el contenido */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; 
+  flex-wrap: wrap; /* Permite que el contenido se ajuste en pantallas pequeñas */
 }
 
 .contact-info, .social-media {
-  margin: 10px 0; 
+  margin: 10px 0; /* Espacio entre elementos */
 }
 
 .contact-info p {
-  margin: 5px 0; 
+  margin: 5px 0; /* Espacio entre las líneas de contacto */
 }
 
 .social-media a {
-  margin: 0 10px; 
+  margin: 0 10px; /* Espacio entre los íconos de redes sociales */
 }
 
 div.q-page-container.page-container{
@@ -567,7 +579,7 @@ div.q-page-container.page-container{
 }
 footer.footer{
   padding: 0;
-  width: 102.2%;
+  width: 102.1% ;
   margin-top: 20px;
   margin-left: -20px;
   margin-bottom: -20px;
