@@ -100,8 +100,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
 
-export default {
-  setup() {
+
     const router = useRouter();
     const drawer = ref(false);
     const loginDialog = ref(false);
@@ -176,8 +175,6 @@ export default {
       closeLoginDialog,
       submitLogin,
     };
-  },
-};
 </script>
 
 <style scoped>
