@@ -116,10 +116,6 @@ const CustomRating = {
       { id: 14, name: 'Parkour', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyRo3k3xdYx8SUz9CbY9KrdM0lxsV8VLVMmA&s', price: 80, type: 'Deporte', description: 'Salta y corre por la ciudad superando obstáculos.', rating: 4 },
     ]);
 
-    return {
-      rooms,
-    };
-
 </script>
 
 <style scoped>
