@@ -163,18 +163,6 @@ import Swal from 'sweetalert2';
       const pageContainer = document.querySelector('.page-container');
       pageContainer.removeEventListener('scroll', checkScroll);
     });
-
-    return {
-      drawer,
-      loginDialog,
-      login,
-      showContact,
-      toggleDrawer,
-      navigateTo,
-      openLoginDialog,
-      closeLoginDialog,
-      submitLogin,
-    };
 </script>
 
 <style scoped>
