@@ -99,13 +99,6 @@ const CustomRating = {
     </div>
   `,
 };
-
-export default {
-  name: 'Habitaciones',
-  components: {
-    CustomRating,
-  },
-  setup() {
     const rooms = ref([
       { id: 1, name: 'Suite de Lujo', image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/29/6a/5d/black.jpg?w=700&h=-1&s=1', price: 120, type: 'Doble', description: 'Habitación elegante con vistas al mar.', rating: 4 },
       { id: 2, name: 'Habitación Familiar', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPe3eKtKfq-TSYmXAvdxyK2yRwy9dyh4Mk4A&s', price: 250, type: 'Suite', description: 'Suite lujosa con jacuzzi y balcón.', rating: 5 },
@@ -127,8 +120,6 @@ export default {
     return {
       rooms,
     };
-  },
-};
 </script>
 
 <style scoped>
