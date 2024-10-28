@@ -76,7 +76,7 @@ const CustomRating = {
     },
   },
   emits: ['update:modelValue'],
-  methods: {
+  funtion: {
     getStarImage(star) {
       return star <= this.modelValue
         ? 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Star_Full.png' 
