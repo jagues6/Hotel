@@ -298,11 +298,11 @@ export default {
     };
 
     const updatePeopleLabel = () => {
-      // Lógica para actualizar la etiqueta si es necesario
+ 
     };
 
     const performSearch = () => {
-      // Lógica para realizar la búsqueda
+
     };
 
     const goToRooms = () => {
@@ -568,10 +568,10 @@ h3 {
   text-align: center; 
 }
 .footer {
-  width: 100%; /* Ocupa todo el ancho de la página */
-  background-color: #000; /* Puedes cambiar el color si lo deseas */
+  width: 100%;
+  background-color: #000; 
   color: #ffffff;
-  padding: 20px 0; /* Espacio arriba y abajo del contenido */
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
