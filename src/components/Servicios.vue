@@ -103,33 +103,45 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
 export default {
-  data() {
-    return {
-      lorem1: "Nuestro chef profesional ofrece un servicio culinario excepcional. Disfruta de platillos preparados con los ingredientes más frescos y técnicas culinarias de alta calidad. Desde cenas privadas hasta eventos especiales, garantizamos una experiencia gastronómica inolvidable.",
-      lorem2: "Ofrecemos una variedad de bebidas artesanales, desde cócteles únicos hasta vinos seleccionados cuidadosamente. Nuestro equipo de bartenders experimentados se asegura de que cada bebida esté hecha a la perfección, brindando una experiencia de sabor excepcional para cada ocasión.",
-      lorem3: "En nuestro servicio de catering, proporcionamos una variedad de opciones de comida que se adaptan a todas las preferencias y dietas. Desde aperitivos hasta platos principales, cada bocado está diseñado para deleitar tus sentidos y hacer de tu evento un éxito.",
-      lorem4: "Disfruta de una experiencia de spa única con nuestros servicios de relajación y bienestar. Desde masajes relajantes hasta tratamientos faciales rejuvenecedores, nuestro equipo profesional se dedica a cuidar de tu bienestar, proporcionándote el momento de calma que mereces.",
-      peopleOptions: [1, 2, 3, 4], // Opciones para seleccionar el número de personas
-    };
-  },
-  methods: {
-    goToService(service) {
+  setup() {
+    const router = useRouter(); // Obtener el router
+    const lorem1 = ref("Nuestro chef profesional ofrece un servicio culinario excepcional. Disfruta de platillos preparados con los ingredientes más frescos y técnicas culinarias de alta calidad. Desde cenas privadas hasta eventos especiales, garantizamos una experiencia gastronómica inolvidable.");
+    const lorem2 = ref("Ofrecemos una variedad de bebidas artesanales, desde cócteles únicos hasta vinos seleccionados cuidadosamente. Nuestro equipo de bartenders experimentados se asegura de que cada bebida esté hecha a la perfección, brindando una experiencia de sabor excepcional para cada ocasión.");
+    const lorem3 = ref("En nuestro servicio de catering, proporcionamos una variedad de opciones de comida que se adaptan a todas las preferencias y dietas. Desde aperitivos hasta platos principales, cada bocado está diseñado para deleitar tus sentidos y hacer de tu evento un éxito.");
+    const lorem4 = ref("Disfruta de una experiencia de spa única con nuestros servicios de relajación y bienestar. Desde masajes relajantes hasta tratamientos faciales rejuvenecedores, nuestro equipo profesional se dedica a cuidar de tu bienestar, proporcionándote el momento de calma que mereces.");
+    const peopleOptions = ref([1, 2, 3, 4]); // Opciones para seleccionar el número de personas
+
+    const goToService = (service) => {
       // Redirigir a la ruta correspondiente según el servicio
       if (service === 'chef') {
-        this.$router.push('/servicio-chef');
+        router.push('/servicio-chef');
       } else if (service === 'bebidas') {
-        this.$router.push('/servicio-bebidas');
+        router.push('/servicio-bebidas');
       } else if (service === 'comida') {
-        this.$router.push('/servicio-comida');
+        router.push('/servicio-comida');
       } else if (service === 'spa') {
-        this.$router.push('/servicio-spa');
+        router.push('/servicio-spa');
       }
-    },
-    reservar() {
+    };
+
+    const reservar = () => {
       // Lógica para reservar
       alert('Reserva realizada exitosamente.');
-    },
+    };
+
+    return {
+      lorem1,
+      lorem2,
+      lorem3,
+      lorem4,
+      peopleOptions,
+      goToService,
+      reservar,
+    };
   },
 };
 </script>
@@ -204,25 +216,25 @@ export default {
 }
 
 .footer-content {
-  width: 90%; 
-  max-width: 1400px; 
-  margin: 0 auto; 
+  width: 90%; /* Ajusta el contenido al 90% del ancho para dejar un margen */
+  max-width: 1400px; /* Limita el ancho máximo */
+  margin: 0 auto; /* Centra el contenido */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; 
+  flex-wrap: wrap; /* Permite que el contenido se ajuste en pantallas pequeñas */
 }
 
 .contact-info, .social-media {
-  margin: 10px 0; 
+  margin: 10px 0; /* Espacio entre elementos */
 }
 
 .contact-info p {
-  margin: 5px 0; 
+  margin: 5px 0; /* Espacio entre las líneas de contacto */
 }
 
 .social-media a {
-  margin: 0 10px; 
+  margin: 0 10px; /* Espacio entre los íconos de redes sociales */
 }
 
 div.q-page-container.page-container{
@@ -230,9 +242,10 @@ div.q-page-container.page-container{
 }
 footer.footer{
   padding: 0;
-  width: 102.2%;
+  width: 120% ;
   margin-top: 20px;
   margin-left: -20px;
   margin-bottom: -20px;
 }
+
 </style>
