@@ -61,60 +61,72 @@
     </footer>
 </template>
 
+
 <script>
+import { ref } from 'vue';
+
+// Componente de CustomRating
+const CustomRating = {
+  props: {
+    modelValue: {
+      type: Number,
+      required: true,
+    },
+    maxStars: {
+      type: Number,
+      default: 5,
+    },
+  },
+  emits: ['update:modelValue'],
+  methods: {
+    getStarImage(star) {
+      return star <= this.modelValue
+        ? 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Star_Full.png' // Estrella llena
+        : 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Star_Empty.png'; // Estrella vacía
+    },
+    updateRating(star) {
+      this.$emit('update:modelValue', star);
+    },
+  },
+  template: `
+    <div>
+      <img
+        v-for="star in maxStars"
+        :key="star"
+        :src="getStarImage(star)"
+        @click="updateRating(star)"
+        class="star"
+        style="width: 24px; cursor: pointer;"
+      />
+    </div>
+  `,
+};
+
 export default {
   name: 'Habitaciones',
   components: {
-    CustomRating: {
-      props: {
-        modelValue: Number,
-        maxStars: {
-          type: Number,
-          default: 5,
-        },
-      },
-      methods: {
-        getStarImage(star) {
-          return star <= this.modelValue
-            ? 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Star_Full.png' // Estrella llena
-            : 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Star_Empty.png'; // Estrella vacía
-        },
-        updateRating(star) {
-          this.$emit('update:modelValue', star);
-        },
-      },
-      template: `
-        <div>
-          <img
-            v-for="star in maxStars"
-            :key="star"
-            :src="getStarImage(star)"
-            @click="updateRating(star)"
-            class="star"
-            style="width: 24px; cursor: pointer;"
-          />
-        </div>
-      `,
-    },
+    CustomRating,
   },
-  data() {
+  setup() {
+    const rooms = ref([
+      { id: 1, name: 'Paracaidismo y salto base', image: 'https://www.intercountries.com.ar/wp-content/uploads/2020/05/Tere.jpg', price: 300, type: 'Aventura', description: 'Salta desde un avión y experimenta la adrenalina de caer en picada.', rating: 5 },
+      { id: 2, name: 'Snowboarding', image: 'https://blog.nols.edu/hubfs/Molly_Hagbrand_TVB-11.jpg', price: 150, type: 'Deporte', description: 'Desafía tus límites en impresionantes acantilados.', rating: 4 },
+      { id: 3, name: 'Freerunning', image: 'https://img.redbull.com/images/c_crop,x_0,y_0,h_2133,w_2844/c_fill,w_800,h_572/q_auto,f_auto/redbullcom/2022/4/20/onymf5vo9ungvzpg4ucm/stefan-dollinger-freerunning-atenas', price: 100, type: 'Aventura', description: 'Atrapa la ola perfecta en las mejores playas.', rating: 4 },
+      { id: 4, name: 'Bungee Jumping', image: 'https://blog.jeep.com.ec/hubfs/7%20deportes%20extremos%20para%20realizar%20outdoor%20despu%C3%A9s%20de%20la%20cuarentena-1.png', price: 250, type: 'Aventura', description: 'Salta al vacío desde un puente y siente la adrenalina.', rating: 5 },
+      { id: 5, name: 'Rafting', image: 'https://media.traveler.es/photos/622a11b662d4f113d6eb070c/16:9/w_2560%2Cc_limit/raf.jpg', price: 200, type: 'Deporte', description: 'Navega ríos tumultuosos en equipo y disfruta la aventura.', rating: 4 },
+      { id: 6, name: 'Kitesurf', image: 'https://res.cloudinary.com/manawa/image/upload/f_auto,c_limit,w_1920,q_auto/articles/62409/Kite', price: 180, type: 'Aventura', description: 'Conquista el agua y el viento en esta emocionante actividad.', rating: 5 },
+      { id: 7, name: 'Esquí', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIRB8ZaJ-KtJPQKk5kYSm0L4JPT1ZSUtwdg&s', price: 220, type: 'Deporte', description: 'Deslízate por las montañas cubiertas de nieve.', rating: 4 },
+      { id: 8, name: 'Mountain Bike', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQJ3d23DbZUQnGCUunWaSpR4Zne2jFacme5w&s', price: 120, type: 'Aventura', description: 'Recorre senderos desafiantes en bicicleta de montaña.', rating: 4 },
+      { id: 9, name: 'Esnórquel', image: 'https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small/public/temas/snorkel_p.jpg', price: 90, type: 'Deporte', description: 'Explora el fondo del mar con equipos de esnórquel.', rating: 4 },
+      { id: 10, name: 'Canyoning', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9PVcuX1M1JLiFlS1g-jY_i6_WLGwyNbF4pw&s', price: 160, type: 'Aventura', description: 'Desciende por cañones con agua y rocas.', rating: 5 },
+      { id: 11, name: 'Ski Surf', image: 'https://i.ytimg.com/vi/JMczFubQExg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCNZLXKr507ZGyGuPwXBQIsYFNpAg', price: 140, type: 'Aventura', description: 'Una combinación de esquí y surf en el mar.', rating: 4 },
+      { id: 12, name: 'Slackline', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfIcd50COqnMMLIvPpaNopK2_q01j5CTJVtg&s', price: 60, type: 'Deporte', description: 'Equilibrio en una cuerda suspendida entre dos puntos.', rating: 3 },
+      { id: 13, name: 'Motocross', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjtpOykvTke_G2dB6qMQZin0hxi2pSdWmaUQ&s', price: 300, type: 'Aventura', description: 'Desafía la gravedad en terrenos difíciles con tu moto.', rating: 5 },
+      { id: 14, name: 'Parkour', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyRo3k3xdYx8SUz9CbY9KrdM0lxsV8VLVMmA&s', price: 80, type: 'Deporte', description: 'Salta y corre por la ciudad superando obstáculos.', rating: 4 },
+    ]);
+
     return {
-      rooms: [
-        { id: 1, name: 'Paracaidismo y salto base', image: 'https://www.intercountries.com.ar/wp-content/uploads/2020/05/Tere.jpg', price: 300, type: 'Aventura', description: 'Salta desde un avión y experimenta la adrenalina de caer en picada.', rating: 5 },
-        { id: 2, name: 'Snowboarding', image: 'https://blog.nols.edu/hubfs/Molly_Hagbrand_TVB-11.jpg', price: 150, type: 'Deporte', description: 'Desafía tus límites en impresionantes acantilados.', rating: 4 },
-        { id: 3, name: 'freerunning', image: 'https://img.redbull.com/images/c_crop,x_0,y_0,h_2133,w_2844/c_fill,w_800,h_572/q_auto,f_auto/redbullcom/2022/4/20/onymf5vo9ungvzpg4ucm/stefan-dollinger-freerunning-atenas', price: 100, type: 'Aventura', description: 'Atrapa la ola perfecta en las mejores playas.', rating: 4 },
-        { id: 4, name: 'Bungee Jumping', image: 'https://blog.jeep.com.ec/hubfs/7%20deportes%20extremos%20para%20realizar%20outdoor%20despu%C3%A9s%20de%20la%20cuarentena-1.png', price: 250, type: 'Aventura', description: 'Salta al vacío desde un puente y siente la adrenalina.', rating: 5 },
-        { id: 5, name: 'Rafting', image: 'https://media.traveler.es/photos/622a11b662d4f113d6eb070c/16:9/w_2560%2Cc_limit/raf.jpg', price: 200, type: 'Deporte', description: 'Navega ríos tumultuosos en equipo y disfruta la aventura.', rating: 4 },
-        { id: 6, name: 'Kitesurf', image: 'https://res.cloudinary.com/manawa/image/upload/f_auto,c_limit,w_1920,q_auto/articles/62409/Kite', price: 180, type: 'Aventura', description: 'Conquista el agua y el viento en esta emocionante actividad.', rating: 5 },
-        { id: 7, name: 'Esquí', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIRB8ZaJ-KtJPQKk5kYSm0L4JPT1ZSUtwdg&s', price: 220, type: 'Deporte', description: 'Deslízate por las montañas cubiertas de nieve.', rating: 4 },
-        { id: 8, name: 'Mountain Bike', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQJ3d23DbZUQnGCUunWaSpR4Zne2jFacme5w&s', price: 120, type: 'Aventura', description: 'Recorre senderos desafiantes en bicicleta de montaña.', rating: 4 },
-        { id: 10, name: 'Esnórquel', image: 'https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small/public/temas/snorkel_p.jpg', price: 90, type: 'Deporte', description: 'Explora el fondo del mar con equipos de esnórquel.', rating: 4 },
-        { id: 11, name: 'Canyoning', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9PVcuX1M1JLiFlS1g-jY_i6_WLGwyNbF4pw&s', price: 160, type: 'Aventura', description: 'Desciende por cañones con agua y rocas.', rating: 5 },
-        { id: 12, name: 'Ski Surf', image: 'https://i.ytimg.com/vi/JMczFubQExg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCNZLXKr507ZGyGuPwXBQIsYFNpAg', price: 140, type: 'Aventura', description: 'Una combinación de esquí y surf en el mar.', rating: 4 },
-        { id: 13, name: 'Slackline', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfIcd50COqnMMLIvPpaNopK2_q01j5CTJVtg&s', price: 60, type: 'Deporte', description: 'Equilibrio en una cuerda suspendida entre dos puntos.', rating: 3 },
-        { id: 14, name: 'Motocross', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjtpOykvTke_G2dB6qMQZin0hxi2pSdWmaUQ&s', price: 300, type: 'Aventura', description: 'Desafía la gravedad en terrenos difíciles con tu moto.', rating: 5 },
-        { id: 15, name: 'Parkour', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyRo3k3xdYx8SUz9CbY9KrdM0lxsV8VLVMmA&s', price: 80, type: 'Deporte', description: 'Salta y corre por la ciudad superando obstáculos.', rating: 4 },
-      ],
+      rooms,
     };
   },
 };
