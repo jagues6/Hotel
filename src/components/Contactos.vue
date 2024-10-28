@@ -62,7 +62,7 @@
   
       const submitForm = () => {
         console.log('Datos del formulario:', formData.value);
-        // Aquí podrías agregar lógica para enviar el formulario a un servidor
+
       };
   
       return {
@@ -89,7 +89,7 @@
   h2, h3 {
     text-align: center;
     margin-bottom: 15px;
-    color: #FFD700; /* Color amarillo */
+    color: #FFD700;
   }
   
   .form-group {
@@ -100,7 +100,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #FFD700; /* Color amarillo */
+    color: #FFD700;
   }
   
   .form-group input,
