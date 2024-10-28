@@ -256,8 +256,7 @@
 <script>
 import { ref } from 'vue';
 
-export default {
-  setup() {
+
     const destinationDialog = ref(false);
     const dateDialog = ref(false);
     const peopleDialog = ref(false);
@@ -350,8 +349,7 @@ export default {
       previousSlide,
       nextSlide,
     };
-  },
-};
+
 </script>
 
 <style scoped>
