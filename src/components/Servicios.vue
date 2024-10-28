@@ -129,15 +129,6 @@ import { useRouter } from 'vue-router';
       alert('Reserva realizada exitosamente.');
     };
 
-    return {
-      lorem1,
-      lorem2,
-      lorem3,
-      lorem4,
-      peopleOptions,
-      goToService,
-      reservar,
-    };
 </script>
 
 <style scoped>
