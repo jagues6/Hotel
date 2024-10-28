@@ -253,80 +253,106 @@
     </footer>
 </template>
 
-<script setup>
+<script>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 
-const router = useRouter();
+export default {
+  setup() {
+    const destinationDialog = ref(false);
+    const dateDialog = ref(false);
+    const peopleDialog = ref(false);
+    const selectedDestination = ref(null);
+    const selectedDate = ref(null);
+    const selectedPeople = ref(null);
+    const peopleOptions = [1, 2, 3, 4];
+    const filteredDestinations = ['Playa', 'Montaña', 'Ciudad', 'Campo'];
+    const slide = ref('first');
 
-const destinationDialog = ref(false);
-const dateDialog = ref(false);
-const peopleDialog = ref(false);
-const selectedDestination = ref(null);
-const selectedDate = ref(null);
-const selectedPeople = ref(null);
-const peopleOptions = ref([1, 2, 3, 4]);
-const filteredDestinations = ref(['Playa', 'Montaña', 'Ciudad', 'Campo']);
-const slide = ref('first');
+    const openDestinationDialog = () => {
+      destinationDialog.value = true;
+    };
 
-const openDestinationDialog = () => {
-  destinationDialog.value = true;
-};
+    const closeDestinationDialog = () => {
+      destinationDialog.value = false;
+    };
 
-const closeDestinationDialog = () => {
-  destinationDialog.value = false;
-};
+    const selectDestination = (destination) => {
+      selectedDestination.value = destination;
+      closeDestinationDialog();
+    };
 
-const selectDestination = (destination) => {
-  selectedDestination.value = destination;
-  closeDestinationDialog();
-};
+    const openDateDialog = () => {
+      dateDialog.value = true;
+    };
 
-const openDateDialog = () => {
-  dateDialog.value = true;
-};
+    const closeDateDialog = () => {
+      dateDialog.value = false;
+    };
 
-const closeDateDialog = () => {
-  dateDialog.value = false;
-};
+    const openPeopleDialog = () => {
+      peopleDialog.value = true;
+    };
 
-const openPeopleDialog = () => {
-  peopleDialog.value = true;
-};
+    const closePeopleDialog = () => {
+      peopleDialog.value = false;
+    };
 
-const closePeopleDialog = () => {
-  peopleDialog.value = false;
-};
+    const updatePeopleLabel = () => {
+      // Lógica para actualizar la etiqueta si es necesario
+    };
 
-const updatePeopleLabel = () => {
-  // Aquí puedes añadir lógica si es necesario
-};
+    const performSearch = () => {
+      // Lógica para realizar la búsqueda
+    };
 
-const performSearch = () => {
-  // Aquí puedes añadir lógica si es necesario
-};
+    const goToRooms = () => {
+      this.$router.push('/habitaciones');
+    };
 
-const goToRooms = () => {
-  router.push('/habitaciones');
-};
+    const goToService = () => {
+      this.$router.push('/servicios');
+    };
 
-const goToService = () => {
-  router.push('/servicios');
-};
+    const goToSports = () => {
+      this.$router.push('/deportes');
+    };
 
-const goToSports = () => {
-  router.push('/deportes');
-};
+    const previousSlide = () => {
+      slide.value = slide.value === 'first' ? 'fourth' : `${Number(slide.value) - 1}`;
+    };
 
-const previousSlide = () => {
-  slide.value = slide.value === 'first' ? 'fourth' : (parseInt(slide.value) - 1).toString();
-};
+    const nextSlide = () => {
+      slide.value = slide.value === 'fourth' ? 'first' : `${Number(slide.value) + 1}`;
+    };
 
-const nextSlide = () => {
-  slide.value = slide.value === 'fourth' ? 'first' : (parseInt(slide.value) + 1).toString();
+    return {
+      destinationDialog,
+      dateDialog,
+      peopleDialog,
+      selectedDestination,
+      selectedDate,
+      selectedPeople,
+      peopleOptions,
+      filteredDestinations,
+      slide,
+      openDestinationDialog,
+      closeDestinationDialog,
+      selectDestination,
+      openDateDialog,
+      closeDateDialog,
+      openPeopleDialog,
+      closePeopleDialog,
+      updatePeopleLabel,
+      performSearch,
+      goToRooms,
+      goToService,
+      goToSports,
+      previousSlide,
+      nextSlide,
+    };
+  },
 };
 </script>
-
 
 <style scoped>
 .destination-header {
