@@ -322,31 +322,6 @@ import { ref } from 'vue';
       slide.value = slide.value === 'fourth' ? 'first' : `${Number(slide.value) + 1}`;
     };
 
-    return {
-      destinationDialog,
-      dateDialog,
-      peopleDialog,
-      selectedDestination,
-      selectedDate,
-      selectedPeople,
-      peopleOptions,
-      filteredDestinations,
-      slide,
-      openDestinationDialog,
-      closeDestinationDialog,
-      selectDestination,
-      openDateDialog,
-      closeDateDialog,
-      openPeopleDialog,
-      closePeopleDialog,
-      updatePeopleLabel,
-      performSearch,
-      goToRooms,
-      goToService,
-      goToSports,
-      previousSlide,
-      nextSlide,
-    };
 
 </script>
 
