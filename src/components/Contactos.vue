@@ -60,12 +60,7 @@
         console.log('Datos del formulario:', formData.value);
 
       };
-  
-      return {
-        formData,
-        googleMapsUrl,
-        submitForm,
-      };
+
 
   </script>
   
