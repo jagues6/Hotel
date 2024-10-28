@@ -76,14 +76,14 @@ const CustomRating = {
     },
   },
   emits: ['update:modelValue'],
-  methods: {
+  funtion: {
     getStarImage(star) {
       return star <= this.modelValue
         ? 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Star_Full.png' 
         : 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Star_Empty.png'; 
     },
     updateRating(star) {
-      this.$emit('update:modelValue', star);
+      $emit('update:modelValue', star);
     },
   },
   template: `
