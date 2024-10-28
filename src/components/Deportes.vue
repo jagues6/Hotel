@@ -64,8 +64,6 @@
 
 <script>
 import { ref } from 'vue';
-
-// Componente de CustomRating
 const CustomRating = {
   props: {
     modelValue: {
@@ -101,13 +99,6 @@ const CustomRating = {
     </div>
   `,
 };
-
-export default {
-  name: 'Habitaciones',
-  components: {
-    CustomRating,
-  },
-  setup() {
     const rooms = ref([
       { id: 1, name: 'Paracaidismo y salto base', image: 'https://www.intercountries.com.ar/wp-content/uploads/2020/05/Tere.jpg', price: 300, type: 'Aventura', description: 'Salta desde un avión y experimenta la adrenalina de caer en picada.', rating: 5 },
       { id: 2, name: 'Snowboarding', image: 'https://blog.nols.edu/hubfs/Molly_Hagbrand_TVB-11.jpg', price: 150, type: 'Deporte', description: 'Desafía tus límites en impresionantes acantilados.', rating: 4 },
@@ -128,8 +119,7 @@ export default {
     return {
       rooms,
     };
-  },
-};
+
 </script>
 
 <style scoped>
