@@ -46,10 +46,6 @@
   
     <script>
   import { ref } from 'vue';
-  
-  export default {
-    name: 'Contactos',
-    setup() {
       const formData = ref({
         name: '',
         email: '',
@@ -70,8 +66,7 @@
         googleMapsUrl,
         submitForm,
       };
-    },
-  };
+
   </script>
   
   <style scoped>
