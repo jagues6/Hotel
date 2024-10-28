@@ -105,8 +105,6 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-
-
     const router = useRouter(); // Obtener el router
     const lorem1 = ref("Nuestro chef profesional ofrece un servicio culinario excepcional. Disfruta de platillos preparados con los ingredientes más frescos y técnicas culinarias de alta calidad. Desde cenas privadas hasta eventos especiales, garantizamos una experiencia gastronómica inolvidable.");
     const lorem2 = ref("Ofrecemos una variedad de bebidas artesanales, desde cócteles únicos hasta vinos seleccionados cuidadosamente. Nuestro equipo de bartenders experimentados se asegura de que cada bebida esté hecha a la perfección, brindando una experiencia de sabor excepcional para cada ocasión.");
@@ -128,7 +126,6 @@ import { useRouter } from 'vue-router';
     };
 
     const reservar = () => {
-      // Lógica para reservar
       alert('Reserva realizada exitosamente.');
     };
 
