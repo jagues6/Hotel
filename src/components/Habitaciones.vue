@@ -64,7 +64,6 @@
 <script>
 import { ref } from 'vue';
 
-// Componente de CustomRating
 const CustomRating = {
   props: {
     modelValue: {
@@ -80,8 +79,8 @@ const CustomRating = {
   methods: {
     getStarImage(star) {
       return star <= this.modelValue
-        ? 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Star_Full.png' // Estrella llena
-        : 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Star_Empty.png'; // Estrella vacía
+        ? 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Star_Full.png' 
+        : 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Star_Empty.png'; 
     },
     updateRating(star) {
       this.$emit('update:modelValue', star);
@@ -134,51 +133,51 @@ export default {
 
 <style scoped>
 .my-card {
-  background-color: #333; /* Fondo oscuro para las tarjetas */
-  color: white; /* Color de texto blanco */
-  height: 420px; /* Altura fija para las tarjetas */
+  background-color: #333; 
+  color: white; 
+  height: 420px; 
 }
 
 .card-image {
-  height: 200px; /* Altura de la imagen */
-  object-fit: cover; /* Mantiene la relación de aspecto de la imagen */
+  height: 200px; 
+  object-fit: cover;
 }
 
 .star {
-  width: 24px; /* Tamaño de la estrella */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  width: 24px; 
+  cursor: pointer; 
 }
 
 .q-page {
-  overflow-y: auto; /* Permite el desplazamiento vertical */
-  min-height: 100vh; /* Asegura que la página ocupe toda la altura */
+  overflow-y: auto; 
+  min-height: 100vh; 
 }
 
 .title-italic {
-  font-family: 'Times New Roman', Times, serif; /* Fuente elegante */
+  font-family: 'Times New Roman', Times, serif; 
 }
 .text-center{
   position: relative; 
   z-index: 2; 
   font-size: 2.5rem; 
   color: #FFD700; 
-  font-family: 'Brush Script MT', cursive; /* Cambia aquí para usar Brush Script */
+  font-family: 'Brush Script MT', cursive;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); 
   transition: transform 0.3s ease; 
   text-align: center; 
   animation: bounceTitle 2s ease infinite; 
 }
 .contactos{
-  font-size: 3rem; /* Tamaño del título */
+  font-size: 3rem;
   color: #000000; 
-  font-family: 'Brush Script MT', cursive; /* Fuente elegante */
-  text-align: center; /* Centrado */
+  font-family: 'Brush Script MT', cursive; 
+  text-align: center; 
 }
 .footer {
-  width: 100%; /* Ocupa todo el ancho de la página */
-  background-color: #000; /* Puedes cambiar el color si lo deseas */
+  width: 100%; 
+  background-color: #000; 
   color: #ffffff;
-  padding: 20px 0; /* Espacio arriba y abajo del contenido */
+  padding: 20px 0; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -186,25 +185,25 @@ export default {
 }
 
 .footer-content {
-  width: 90%; /* Ajusta el contenido al 90% del ancho para dejar un margen */
-  max-width: 1400px; /* Limita el ancho máximo */
-  margin: 0 auto; /* Centra el contenido */
+  width: 90%; 
+  max-width: 1400px; 
+  margin: 0 auto; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Permite que el contenido se ajuste en pantallas pequeñas */
+  flex-wrap: wrap;
 }
 
 .contact-info, .social-media {
-  margin: 10px 0; /* Espacio entre elementos */
+  margin: 10px 0;
 }
 
 .contact-info p {
-  margin: 5px 0; /* Espacio entre las líneas de contacto */
+  margin: 5px 0;
 }
 
 .social-media a {
-  margin: 0 10px; /* Espacio entre los íconos de redes sociales */
+  margin: 0 10px; 
 }
 
 div.q-page-container.page-container{
