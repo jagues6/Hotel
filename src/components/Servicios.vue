@@ -2,7 +2,7 @@
   <div class="q-pa-md" style="overflow-y: auto; height: auto;">
     <div class="q-gutter-md" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
       
-      <!-- Tarjeta de Servicio 1 -->
+
       <q-card class="my-card" flat bordered>
         <q-card-section horizontal>
           <q-card-section class="text-section">
@@ -20,7 +20,7 @@
         </q-card-section>
       </q-card>
 
-      <!-- Tarjeta de Servicio 2 -->
+
       <q-card class="my-card" flat bordered>
         <q-card-section horizontal>
           <q-img
@@ -38,7 +38,7 @@
         </q-card-section>
       </q-card>
 
-      <!-- Tarjeta de Servicio 3 -->
+
       <q-card class="my-card" flat bordered>
         <q-card-section horizontal>
           <q-card-section class="text-section">
@@ -56,7 +56,7 @@
         </q-card-section>
       </q-card>
 
-      <!-- Tarjeta de Servicio 4 -->
+
       <q-card class="my-card" flat bordered>
         <q-card-section horizontal>
           <q-img
@@ -113,10 +113,10 @@ export default {
     const lorem2 = ref("Ofrecemos una variedad de bebidas artesanales, desde cócteles únicos hasta vinos seleccionados cuidadosamente. Nuestro equipo de bartenders experimentados se asegura de que cada bebida esté hecha a la perfección, brindando una experiencia de sabor excepcional para cada ocasión.");
     const lorem3 = ref("En nuestro servicio de catering, proporcionamos una variedad de opciones de comida que se adaptan a todas las preferencias y dietas. Desde aperitivos hasta platos principales, cada bocado está diseñado para deleitar tus sentidos y hacer de tu evento un éxito.");
     const lorem4 = ref("Disfruta de una experiencia de spa única con nuestros servicios de relajación y bienestar. Desde masajes relajantes hasta tratamientos faciales rejuvenecedores, nuestro equipo profesional se dedica a cuidar de tu bienestar, proporcionándote el momento de calma que mereces.");
-    const peopleOptions = ref([1, 2, 3, 4]); // Opciones para seleccionar el número de personas
+    const peopleOptions = ref([1, 2, 3, 4]); 
 
     const goToService = (service) => {
-      // Redirigir a la ruta correspondiente según el servicio
+
       if (service === 'chef') {
         router.push('/servicio-chef');
       } else if (service === 'bebidas') {
@@ -148,41 +148,41 @@ export default {
 
 <style scoped>
 .my-card {
-  width: 95%; /* Aumenta el tamaño de las tarjetas */
-  max-width: 900px; /* Ajuste del límite máximo de las tarjetas */
-  margin: 20px 0; /* Espacio vertical entre las tarjetas */
-  height: auto; /* Ajusta la altura de las tarjetas según su contenido */
-  background-color: black; /* Fondo negro para las tarjetas */
+  width: 95%; 
+  max-width: 900px; 
+  margin: 20px 0; 
+  height: auto; 
+  background-color: black; 
 }
 
 .text-section {
-  padding: 20px; /* Espacio interno para el texto */
-  font-size: 18px; /* Aumenta el tamaño de la letra */
-  font-family: 'Times New Roman', Times, serif; /* Fuente elegante */
-  background-color: black; /* Fondo negro detrás del texto */
-  color: yellow; /* Color del texto en amarillo */
+  padding: 20px; 
+  font-size: 18px; 
+  font-family: 'Times New Roman', Times, serif; 
+  background-color: black; 
+  color: yellow;
 }
 
 .actions {
-  display: flex; /* Alinea los botones en fila */
-  justify-content: space-between; /* Espacio entre los botones */
-  margin-top: 10px; /* Espacio encima de los botones */
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 10px; 
 }
 
 .personas-button,
 .reservar-button {
-  background-color: black; /* Fondo negro para los botones */
-  color: yellow; /* Texto amarillo para los botones */
-  border: 2px solid white; /* Borde blanco para los botones */
+  background-color: black; 
+  color: yellow; 
+  border: 2px solid white; 
 }
 
 .personas-button:hover,
 .reservar-button:hover {
-  background-color: #333; /* Cambio de color al pasar el ratón */
+  background-color: #333; 
 }
 
 .q-pa-md {
-  padding: 20px; /* Espacio alrededor del contenido principal */
+  padding: 20px; 
 }
 
 .col-6 {
@@ -191,24 +191,24 @@ export default {
 
 @media (max-width: 768px) {
   .my-card {
-    width: 100%; /* Ajusta el ancho de las tarjetas en pantallas pequeñas */
+    width: 100%; 
   }
   .image-section {
-    width: 100%; /* Ajusta el ancho de la imagen en pantallas pequeñas */
-    margin-top: 10px; /* Espacio entre el texto y la imagen */
+    width: 100%; 
+    margin-top: 10px; 
   }
 }
 .contactos{
-  font-size: 3rem; /* Tamaño del título */
+  font-size: 3rem;
   color: #000000; 
-  font-family: 'Brush Script MT', cursive; /* Fuente elegante */
-  text-align: center; /* Centrado */
+  font-family: 'Brush Script MT', cursive; 
+  text-align: center;
 }
 .footer {
-  width: 100%; /* Ocupa todo el ancho de la página */
-  background-color: #000; /* Puedes cambiar el color si lo deseas */
+  width: 100%; 
+  background-color: #000; 
   color: #ffffff;
-  padding: 20px 0; /* Espacio arriba y abajo del contenido */
+  padding: 20px 0; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -216,25 +216,25 @@ export default {
 }
 
 .footer-content {
-  width: 90%; /* Ajusta el contenido al 90% del ancho para dejar un margen */
-  max-width: 1400px; /* Limita el ancho máximo */
-  margin: 0 auto; /* Centra el contenido */
+  width: 90%; 
+  max-width: 1400px; 
+  margin: 0 auto; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Permite que el contenido se ajuste en pantallas pequeñas */
+  flex-wrap: wrap; 
 }
 
 .contact-info, .social-media {
-  margin: 10px 0; /* Espacio entre elementos */
+  margin: 10px 0; 
 }
 
 .contact-info p {
-  margin: 5px 0; /* Espacio entre las líneas de contacto */
+  margin: 5px 0; 
 }
 
 .social-media a {
-  margin: 0 10px; /* Espacio entre los íconos de redes sociales */
+  margin: 0 10px; 
 }
 
 div.q-page-container.page-container{
