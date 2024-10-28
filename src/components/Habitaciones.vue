@@ -117,9 +117,6 @@ const CustomRating = {
       { id: 15, name: 'Habitación para Mascotas', image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/aa/19/66/habitacion-y-jacuzzi.jpg?w=500&h=400&s=1', price: 160, type: 'Doble', description: 'Habitación amigable para tus mascotas.', rating: 4 },
     ]);
 
-    return {
-      rooms,
-    };
 </script>
 
 <style scoped>
