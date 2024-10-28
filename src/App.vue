@@ -95,7 +95,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
