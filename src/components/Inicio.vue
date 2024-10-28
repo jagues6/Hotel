@@ -255,6 +255,10 @@
 
 <script setup>
 import { ref } from 'vue';
+  import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+
     const destinationDialog = ref(false);
     const dateDialog = ref(false);
     const peopleDialog = ref(false);
@@ -303,7 +307,7 @@ import { ref } from 'vue';
     };
 
     const goToRooms = () => {
-      $router.push('/habitaciones');
+      router.push('/habitaciones');
     };
 
     const goToService = () => {
