@@ -255,8 +255,6 @@
 
 <script setup>
 import { ref } from 'vue';
-
-
     const destinationDialog = ref(false);
     const dateDialog = ref(false);
     const peopleDialog = ref(false);
@@ -305,15 +303,15 @@ import { ref } from 'vue';
     };
 
     const goToRooms = () => {
-      this.$router.push('/habitaciones');
+      $router.push('/habitaciones');
     };
 
     const goToService = () => {
-      this.$router.push('/servicios');
+      $router.push('/servicios');
     };
 
     const goToSports = () => {
-      this.$router.push('/deportes');
+      $router.push('/deportes');
     };
 
     const previousSlide = () => {
