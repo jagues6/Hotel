@@ -44,25 +44,32 @@
     </div>
   </template>
   
-  <script>
+    <script>
+  import { ref } from 'vue';
+  
   export default {
     name: 'Contactos',
-    data() {
-      return {
-        formData: {
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: '',
-        },
-        googleMapsUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094725!2d144.95373531531853!3d-37.816279179751984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f4f9e7b1%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sau!4v1604296168881!5m2!1sen!2sau',
+    setup() {
+      const formData = ref({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+  
+      const googleMapsUrl = ref('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094725!2d144.95373531531853!3d-37.816279179751984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f4f9e7b1%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sau!4v1604296168881!5m2!1sen!2sau');
+  
+      const submitForm = () => {
+        console.log('Datos del formulario:', formData.value);
+        // Aquí podrías agregar lógica para enviar el formulario a un servidor
       };
-    },
-    methods: {
-      submitForm() {
-        console.log('Datos del formulario:', this.formData);
-      },
+  
+      return {
+        formData,
+        googleMapsUrl,
+        submitForm,
+      };
     },
   };
   </script>
